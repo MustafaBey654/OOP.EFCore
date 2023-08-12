@@ -9,11 +9,22 @@ namespace OOP.EFCore.ConsoleApp.Entities
 {
     public class Book
     {
-        [Key] //Primery Key
+       
         public int BookId { get; set; }
-        [Required] // Zorunlu Alan
-        [MaxLength(50)]
+       
         public string  Title { get; set; }
+        
+        public DateTime CreatedDate { get; set; }
+
+
+        //Diger tablodaki categoryId bağlantısı
+        // foreign key
+        public int? CategoryId { get; set; }
+
+        //Simple navigation property
+        //Entitlerin ilişkilerini belirleyen bir özellik
+        //Bire bir ilişki türü
+        public Category Category { get; set; }
 
     }
 }

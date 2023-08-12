@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using OOP.EFCore.ConsoleApp.DAL.Mapping;
 using OOP.EFCore.ConsoleApp.Entities;
 using System;
 using System.Collections.Generic;
@@ -16,5 +17,14 @@ namespace OOP.EFCore.ConsoleApp.DAL
         }
 
         public DbSet<Book> Books { get; set; }
+        public DbSet<Category> Categories { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //Book Map üzerindeki kuralları uygulayarak magration yap. 
+            modelBuilder.ApplyConfiguration(new BookMap());
+            modelBuilder.ApplyConfiguration(new CategoryMap());
+        }
     }
 }
